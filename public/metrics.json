@@ -1,0 +1,9 @@
+{
+  "age_groups": [
+    { "range": "18-24", "percentage": 30 },
+    { "range": "25-34", "percentage": 45 },
+    { "range": "35-44", "percentage": 20 },
+    { "range": "Otros", "percentage": 5 },
+    { "range": "España", "percentage": 15 }
+  ]
+}

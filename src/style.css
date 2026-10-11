@@ -1,0 +1,34 @@
+/* Estilos mínimos para que puedas ver la gráfica centrada en tu pantalla */
+body {
+  background-color: #0b0f19;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* 1. ACTUALIZADO: Tu contenedor real ahora tiene el control de gestos táctiles */
+#canvas-age {
+  width: 500px;
+  height: 500px;
+  background: rgba(21, 29, 48, 0.5);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden; /* Evita que el lienzo 3D se desborde */
+  
+  /* ⚡ CRUCIAL PARA MÓVILES: Permite hacer scroll vertical con el dedo sobre la gráfica, 
+     pero bloquea los gestos de zoom del navegador que rompen el diseño. */
+  touch-action: pan-y; 
+}
+
+/* 2. ACTUALIZADO: Apunta directamente al canvas que genera Three.js dentro de tu ID */
+#canvas-age canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  
+  /* Permite que los Pointer Events de JavaScript (los que acabamos de programar) 
+     se activen correctamente en móviles y escritorio. */
+  pointer-events: auto; 
+}
