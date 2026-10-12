@@ -3,42 +3,6 @@ import './style.css'
 import * as THREE from 'three';
 import { Timer } from 'three';
 
-export default {
-  async fetch(request, env, ctx) {
-    // 1) Configuras los permisos de seguridad (CORS)
-    const corsHeaders = {
-      "Access-Control-Allow-Origin": "*", 
-      "Access-Control-Allow-Methods": "GET, HEAD, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
-    };
-
-    // 2) Respondes a la pregunta de seguridad automática del navegador (OPTIONS)
-    if (request.method === "OPTIONS") {
-      return new Response(null, { status: 204, headers: corsHeaders });
-    }
-
-    // 3) Aquí pones tu código nativo de Three.js (la escena individual)
-    const tuCodigoThreeJS = `
-      import * as THREE from 'https://cloudflare.com';
-      
-      export function initEscena(containerId, data) {
-        // Tu lógica de Three.js para el globo o la gráfica...
-        console.log("Escena cargada de forma individual.");
-      }
-    `;
-
-    // 4) Envías el código Three.js a la LandingPage con los permisos (CORS) activados
-    return new Response(tuCodigoThreeJS, {
-      status: 200,
-      headers: {
-        ...corsHeaders,
-        "Content-Type": "application/javascript; charset=utf-8" // Indica que es un script ejecutable
-      }
-    });
-  }
-};
-
-
 /**
  * Inicializa y renderiza la gráfica 3D de barras cilíndricas animadas.
  * @param {string} containerId - El ID del div contenedor de la Landing Page.
